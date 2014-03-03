@@ -1,0 +1,104 @@
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,300,500,700,900);
+@import url(http://fonts.googleapis.com/css?family=Patua+One);
+@import url(http://fonts.googleapis.com/css?family=Armata);
+
+body {
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 300;
+}
+
+p {
+  margin-bottom: 2em;
+}
+
+.textShadow {
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+}
+
+.boxShadow {
+  -webkit-box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+  box-shadow:  0px 0px 10px 0px rgba(0, 0, 0, 0.5);
+}
+
+.home {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 900px;
+  background: url("http://www.sanderkeurentjes.nl/portfolio/img/bg-home.jpg") 50% 0 repeat fixed;
+}
+
+.about {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 900px;
+  /*background: url("http://xdesigns.net/wp-content/uploads/2013/07/4-grass-wallpaper.jpg") 50% 0 no-repeat;*/
+}
+
+.contact {
+  position: relative;
+  margin: 0 auto;
+  width: 100%;
+  height: 900px;
+  background: url("http://wallpoper.com/images/00/40/30/48/nature-water_00403048.jpg") 50% 0 repeat fixed;
+}
+
+.content {
+  position: absolute;
+  top: 50px;
+  width: 80%;
+  height: 458px;
+  padding: 0 10%;
+  text-align: center;
+}
+
+.articleTitle {
+  margin-bottom: 0.25em;
+  font-family: 'Patua One', cursive;
+  font-size: 8em;
+  line-height: 1em;
+  color: #fff;
+}
+
+  .articleTitle .dark {
+    color: #333;
+  }
+
+.articleSubTitle {
+  font-family: 'Armata', sans-serif;
+  font-size: 3em;
+  line-height: 1em;
+  color: #fff;
+}
+
+/*navigition*/
+#fdw nav select {
+  display: none;
+}
+
+#fdw {
+  margin: auto;
+}
+
+#fdw nav ul {
+  display: block;
+  z-index: 999999;
+  text-align: center;
+}
+
+#fdw nav ul li {
+  display: inline-block;
+  padding: 50px 3px 30px;
+  margin-left: 30px;
+  position: relative;
+
+  color:#444;
+  font:normal 20px 'Yanone Kaffeesatz', sans-serif;
+  text-transform:uppercase;
+  display:inline-block;
+  /*position:relative;*/
+}
+/*end navigition*/

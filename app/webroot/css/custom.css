@@ -1,0 +1,27 @@
+.span12 {
+    width: 1025px;
+}
+
+#portfolio.columns li {
+    min-height: 400px;
+}
+
+.span4 {
+    width: 315px;
+}
+
+#portfolio.columns li {
+    background: none repeat scroll 0 0 #EFF0F0;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px 0 rgba(50, 50, 50, 0.75);
+    min-height: 400px;
+}
+
+#portfolio.columns li {
+    background: none repeat scroll 0 0 #EFF0F0;
+    border: 1px solid #DDDDDD;
+    border-radius: 5px;
+    box-shadow: 3px 3px 8px 0 rgba(50, 50, 50, 0.75);
+    min-height: 400px;
+}
