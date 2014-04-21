@@ -1,23 +1,28 @@
-<h1><?php echo h($post['Post']['title']); ?></h1>
-
-<p><small>Created: <?php echo $post['Post']['created']; ?></small></p>
-
+<?php echo $this->html->css('view');?>
+<div class='view'>
+<h1>
+	<?php echo h($post['Post']['title']); ?>
+	<span>An Article by <?php echo $post['User']['username']; ?></span>
+</h1>
+<div class="meta"><span>Created: </span><?php echo $post['Post']['created']; ?></div>
+<div class = "content_view">
 <p><?php echo h($post['Post']['body']); ?></p>
-
-<?php foreach($post['Comment'] as $comment): ?>
+</div>
+<h2>Comments</h2>
+<div class="comment">
+<?php foreach($comments as $comment): ?>
 	<div class="comment" style="margin-left: 50px;">
 		<p>
-			<?php echo $users_username; ?>: 
-			<?php echo $comment['created'];?>
-			<?php echo h($comment['text']); ?>
+			<div class='post_username'>
+				<?php echo $comment['User']['username'] ;?>
+				<span><?php echo ' Created: '.$comment['Comment']['created'];?></span>
+			</div>
+			<div class='post_comment'><?php echo h($comment['Comment']['text']); ?></div>
 		</p>
 	</div>
 <?php 
 	endforeach;
 	echo $this->element('newcomment', array("post_id" => $post['Post']['id']));
 ?>
-<?php //echo $html->link('Add Comment', array('controller'=>'Comments','action'=>'add',$postid)); ?>
-<!-- 
-// add comments
-<?php 
-//echo $this -> element('addcomment', array('cache' => array('config' => 'long'))); -->
+</div>
+</div>

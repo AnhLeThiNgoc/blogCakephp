@@ -41,8 +41,22 @@ class AppController extends Controller {
 				'home'
 				),
         'authorize' => array('Controller') // Added this line
-        )
+        ),
 		);
+
+    public $paginate = array(
+        'Post' => array(
+            'limit' => '3',
+            'order' => array(
+                'Post.published' => 'asc',
+                'Post.created' => 'desc'
+            )
+        ),
+        'Comment' => array(
+            'limit' => '10',
+            'order' => array('Comment.created' => 'desc')
+        )
+    );
 
 	public function isAuthorized($user) {
     // Admin can access every action
@@ -69,10 +83,18 @@ class AppController extends Controller {
         }
         return $user;
     }
+    function userAdmin() {
+        $admin = null;
+        if($this->Auth->user()) {
+            $admin = $this->Auth->user('role');
+        }
+        return $admin;
+    }
     public function beforeFilter() {
         $this->Auth->allow('index', 'view');
         $this->set('logged_in', $this->loggedIn());
         $this->set('users_username', $this->userUsername());
+        $this->set('admin', $this->userAdmin());
         App::import('Vendor', 'facebook-php-sdk-master/src/facebook');
         Configure::load('facebook');
         $this->Facebook = new Facebook(array(

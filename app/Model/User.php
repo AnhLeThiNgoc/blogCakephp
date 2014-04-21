@@ -1,7 +1,10 @@
 <?php
 App::uses('SimplePasswordHasher', 'Controller/Component/Auth');
 class User extends AppModel {
-    var $hasMany = array('Post' => array('className' => 'Post'));
+    var $name = 'User';
+    var $hasMany = array('Post' => array('className' => 'Post', 'foreignKey' => 'user_id' ),
+        'Comment' => array('className' => 'Comment', 'foreignKey' => 'user_id') 
+        );
     public $validate = array(
         'username' => array(
             'required' => array(

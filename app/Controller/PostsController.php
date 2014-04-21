@@ -4,15 +4,25 @@ $Users = new UsersController();
 $Users->constructClasses();
 
 class PostsController extends AppController {
-    public $users = array('Post', 'Comment');    
+
+    public function beforeFilter() {
+        parent::beforeFilter();
+        $this->Auth->allow('search', 'result');
+    }
+    //upload file
+   // var $components = array('Uploader.Uploader');
+
+    public $uses = array('Post', 'Comment');    
     public $helpers = array('Html', 'Form');
 
     public function index() {
-         $ab = 'Login';
+        // $ab = 'Login';
         // $login = $this->requestAction(array('Controller' => 'users', 'action' => 'login'));
         // $this->set('login', $login);
-        $this->set('about', $ab);
-        $this->set('posts', $this->Post->find('all'));
+       // $this->set('about', $ab);
+        //$this->set('posts', $this->Post->find('all'));
+        $this->Post->recursive = 0;
+        $this->set('posts', $this->paginate());
     }
 
     public function view($id = null) {
@@ -20,25 +30,21 @@ class PostsController extends AppController {
             throw new NotFoundException(__('Invalid post'));
             $this->redirect(array('action' => 'index'));
         }
-        //save comment
-        // if(!empty($this->data['Comment'])) {
-        //     $this->data['Comment']['class'] = 'Post';
-        //     $this->data['Comment']['post_id'] = $id;
-        //     $this->Post->Comment->create();
-        //     if($this->Post->Comment->save($this->data)) {
-        //         $this->Session->setFlash(__('The comment has been saved', true), 'success');
-        //         $this->redirect(array('action' => 'view', $id));
-        //     }
-        //     $this->Session->setFlash(__('The comment could not be saved. Please, try again', true), 'warning');
-        // }
-
-        //
-
+        // $this->Post->recursive = 2;
         $post = $this->Post->findById($id);
+        $a = array();
+        $comments = $post['Comment'];
+        foreach($comments as $comment){
+            $a[] = $this->Comment->findById($comment['id']);
+        }
+
         if (!$post) {
             throw new NotFoundException(__('Invalid post'));
         }
+        // $this->loadModel->('Comment');
+        $user_comment = $this->Comment->findById();
         $this->set('post', $post);
+        $this->set('comments', $a);
     }
 
     public function add() {
@@ -106,5 +112,33 @@ class PostsController extends AppController {
         }
 
         return parent::isAuthorized($user);
+    }
+
+    public function search() {
+        $url['action'] = 'result';
+        $this->redirect($url, null, true);
+    }
+
+    function result() {
+        $conditions = array();
+        $data = array();
+        if(!empty($this->passedArgs)) {
+            if(isset($this->passedArgs['Post.search'])){
+                $keywords = $this->passedArgs['Post.search'];
+                $conditions[] =  array(
+                    "OR" => array(
+                        'Post.title LIKE' => '%$keywords%',
+                        'Post.body LIKE' => '%$keywords%'
+                    )
+                );
+                $data['Post']['search'] = $keywords;
+            }
+            $this->paginate = array(
+                'limit' => 4,
+                'order' => array('title' => 'desc')
+            );
+        }
+        $this->data = $data;
+        $this->set('posts', $this->paginate('Post', $conditions));
     }
 }

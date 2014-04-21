@@ -1,5 +1,4 @@
-<?php echo $this->element('nav');?>
-        <?php echo $this->element('silder');?>
+<?php echo $this->element('silder');?>
 <!--START PRIMARY -->
 <div id="primary" class="sidebar-no">
     <div class="container group">
@@ -37,20 +36,41 @@
                                         </div>
                                     </div>
                                 </div>
-                                <h4><?php echo $this->Html->link($post['Post']['title'], array('controller' => 'post', 'action' => 'view', $post['Post']['id']))?></h4>
+                                <h4><?php echo $this->Html->link($post['Post']['title'], array('controller' => 'posts', 'action' => 'view', $post['Post']['id']))?></h4>
 
                                 <p><?php echo $post['Post']['body']; ?></p>
                                 <p class="read-more">
-                                    <?php echo $this->Html->link('View Project', array('controller' => 'post', 'action' => 'view', $post['Post']['id']))?>
+                                    <?php 
+                                        echo $this->Html->link('View Project', array('controller' => 'posts', 'action' => 'view', $post['Post']['id']));
+                                        if($admin === '1') {
+                                            echo $this->Form->postLink('Delete', array('action' => 'delete', $post['Post']['id']), array('confirm' => 'Are you sure.'));
+                                            echo $this->Html->link('Edit', array('controller' => 'posts', 'action' => 'edit', $post['Post']['id']));
+                                        }
+                                    ?>
                                 </p>
                             </li>
                         <?php endforeach; ?>
                         </ul>
-                        <div class='general-pagination group'>
-                            <a href='#' class='selected' >1</a>
-                            <a href='#' >2</a>
-                            <a href='#'>&rsaquo;</a>
+                      
+                        <div id="pagination">
+                            <p>
+                            <?php
+                             
+                            echo $this->Paginator->counter(array(
+                            'format' => __('Page %page% of %pages%, showing %current% records out of %count% total, starting on record %start%, ending on %end%')
+                            ));
+                            ?>   
+                            </p>
+                         
+                            <div class="paging">
+                                <?php echo $this->Paginator->prev('<< ' . __('previous', true), array(), null, array('class'=>'disabled'));?>
+                             |  <?php echo $this->Paginator->numbers();?>
+                         |
+                                <?php echo $this->Paginator->next(__('next', true) . ' >>', array(), null, array('class' => 'disabled'));?>
+
+                            </div>
                         </div>
+                        
                     </div>
 
                 </div>
@@ -59,4 +79,6 @@
     </div>
 </div>
 <?php echo $this->element('footer'); ?>
-<!-- END PRIMARY
+<!-- END PRIMARY -->
+
+

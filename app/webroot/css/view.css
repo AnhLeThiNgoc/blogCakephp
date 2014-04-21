@@ -1,0 +1,88 @@
+/*.view{
+	background: 
+	border: 20px ridge #e3e3e3;
+	margin-left: 100px;
+	margin-right: 100px;
+}
+.view h1 {
+	text-shadow: 0px 1px 1px #4d4d4d;
+	color: #222;
+	font: 80px 'LeagueGothicRegular';
+	text-transform: uppercase;
+}*/
+
+.view {
+	margin-left: 250px;
+	margin-right: 250px;
+}
+
+h1:nth-child(1){
+  font-size: 4.5em;
+  font-family: Georgia;
+  letter-spacing: 0.1em;
+  color: rgb(142,11,0);
+  text-shadow: 1px 1px 1px rgba(255,255,255,0.6);
+}
+h1 span{
+  display: block;
+  margin-top: 1em;
+  font-family: Verdana;
+  font-size: 0.6em;
+  font-weight: normal;
+  letter-spacing: 0.3em;
+  text-shadow: none;
+}
+.meta{
+  font-family: Georgia;
+  color: rgba(69,54,37,0.6);
+  font-size: 0.85em;
+  font-style: italic;
+  letter-spacing: 0.25em;
+  border-bottom: 1px solid rgba(69,54,37,0.2);
+  padding-bottom: 0.5em;
+}
+.meta span{
+  text-transform: capitalize;
+  font-style: normal;
+  color: rgba(69,54,37,0.8);
+}
+.content_view p{
+	font-family: Georgia;
+	color:rgb(122, 142, 219);
+	font-size: 30px;
+	border-bottom: 1px solid rgba(69,54,37,0.2);
+	padding-bottom: 1em;
+}
+.comment {
+
+	padding-top: 3px;
+}
+.view h2 {
+	font-size: 2.5em;
+  	font-family: Georgia;
+  	letter-spacing: 0.1em;
+  	color: rgb(0,142,97);
+  	text-shadow: 1px 1px 1px rgba(255,255,255,0.6);
+}
+.post_username {
+	font-family: Georgia;
+	font-size: 20px;
+	color:rgb(28, 64, 109);
+	/*text-transform: uppercase;*/
+	font-weight: bold;
+	text-transform: capitalize;
+}
+.post_username span{
+ 	font-size: 15px;
+ 	font-family: Times New Roman;
+ 	font-style: italic;
+}
+.post_comment {
+	font-family: Georgia;
+	font-size: 15px;
+	color:rgb(28, 64, 109);
+	margin-left: 30px;
+}
+.addcomment {
+	color: blue;
+}

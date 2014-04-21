@@ -1263,3 +1263,7 @@ ul.filters.faq li, ul.filters.faq li a { font-size: 15px }
 }
 
 /* ====================== END FAQ ====================== */
+
+#dialog{
+	display: none;
+}

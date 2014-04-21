@@ -48,15 +48,18 @@ $cakeDescription = __d('cake_dev', 'CakePHP: the rapid development php framework
 
 	?>
 	
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js"></script>
 
 	<?php 
-		echo $this->Html->script('jquery');
+		//echo $this->Html->script('jquery');
 		echo $this->Html->script('jquery.flexslider-min');
 		echo $this->Html->script('jquery.tweetable');	
 	?>
 </head>
 <body>
 	<div id="container">
+		<?php echo $this->element('nav');?>
 		
 		
 		<?php echo $this->Session->flash(); ?>
